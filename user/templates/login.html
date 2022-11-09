@@ -1,0 +1,24 @@
+{% extends 'nav.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <!--CSS link-->
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+    
+    {% if user.is_authenticated %}
+    <button class="button2" onclick="location.href='{% url 'logout' %}'">로그아웃</button>
+    {% else %}
+    <div><p class="txt">알림을 받으시려면<br>자전거를 등록해 보세요</p></div>
+    <a href="{% url 'kakaologin' %}" class="button"><img src="{% static 'img/kakao_login.png' %}" alt="" class="img"></a>
+    {% endif %}
+</body>
+</html>
+{% endblock %}
